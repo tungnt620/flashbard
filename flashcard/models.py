@@ -10,7 +10,7 @@ class FlashcardSet(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title
 
 
@@ -25,10 +25,10 @@ class Flashcard(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.question
 
-    def update_review(self, success, quality):
+    def update_review(self, success: bool, quality: int) -> None:
         if success:
             self.repetition += 1
         else:
@@ -48,5 +48,5 @@ class Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'Review for flashcard: {self.flashcard.question}'
