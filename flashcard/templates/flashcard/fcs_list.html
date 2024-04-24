@@ -1,0 +1,35 @@
+{% extends 'flashcard/base.html' %}
+
+{% block content %}
+    <div class="lg:container">
+        <h2 class="text-3xl">Your flash card set</h2>
+
+        {% if your_fcs_list %}
+            <div class="grid grid-cols-4 gap-4">
+                {% for fcs in your_fcs_list %}
+                    <div class="card w-70 bg-base-100 shadow-xl">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ fcs.title }}</h2>
+                            <p>{{ fcs.description }}</p>
+                            <div class="card-actions justify-end">
+                                <a class="btn btn-primary" href="{% url "flashcard:fcs_detail" fcs.id %}">Learn now</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {#        <div class="flex flex-row flex-wrap">#}
+            {#            {% for fcs in your_fcs_list %}#}
+            {#                <div class="basis-1/4">#}
+            {#                    <h2>{{ fcs.title }}</h2>#}
+            {#                    <p>{{ fcs.description }}</p>#}
+            {#                </div>#}
+            {#            {% endfor %}#}
+            {#        </div>#}
+        {% else %}
+            <p>No flashcard set are available.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}
