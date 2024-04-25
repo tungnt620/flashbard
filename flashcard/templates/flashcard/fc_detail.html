@@ -1,0 +1,13 @@
+{% extends 'flashcard/base.html' %}
+
+{% block content %}
+    <h1 class="text-xl">Flashcard</h1>
+
+    <div class="card w-70 bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">{{ flashcard.question }}</h2>
+            <p>{{ flashcard.answer }}</p>
+        </div>
+    </div>
+
+{% endblock %}

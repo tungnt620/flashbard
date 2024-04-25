@@ -5,4 +5,25 @@
     <p>{{ fcs.description }}</p>
     <p>Published: {{ fcs.created_at|date }}</p>
     <p>Updated: {{ fcs.updated_at|date }}</p>
+
+    <br/>
+    <h1 class="text-xl">List flashcards</h1>
+
+    {% if list_fc %}
+        <div class="grid grid-cols-4 gap-4">
+            {% for fc in list_fc %}
+                <div class="card w-70 bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ fc.question }}</h2>
+                        <p>{{ fc.answer }}</p>
+                        <div class="card-actions justify-end">
+                            <a class="btn btn-primary" href="{% url "flashcard:fc_detail" fc.id %}">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No flashcard are available.</p>
+    {% endif %}
 {% endblock %}
